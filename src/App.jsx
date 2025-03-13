@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [userinp, setUserinp] = useState("");
+  const [userinp, setUserinp] = useState("karachi");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -20,6 +20,11 @@ function App() {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    getData();
+    setLoading(false);
+  }, []);
 
   return (
     <div className="weather-container">
